@@ -1,5 +1,7 @@
 # docs
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/apollographql/ios-docs.svg)](https://greenkeeper.io/)
+
 To run:
 
 ```
