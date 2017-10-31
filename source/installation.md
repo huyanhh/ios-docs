@@ -86,6 +86,10 @@ $APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '
 
 The script above will invoke `apollo-codegen` through the `check-and-run-apollo-codegen.sh` wrapper script, which is actually contained in the `Apollo.framework` bundle. The main reason for this is to check whether the version of `apollo-codegen` installed on your system is compatible with the framework version installed in your project, and to warn you if it isn't. Without this check, you could end up generating code that is incompatible with the runtime code contained in the framework.
 
+:warning: Be aware of your naming schemes! Related issues: [#33](https://github.com/apollographql/apollo-ios/issues/175), [#175](https://github.com/apollographql/apollo-ios/issues/175)
+
+`"$(eval find $FRAMEWORK_SEARCH_PATHS -name "Apollo.framework" -maxdepth 1)"` may not work for your project if your project scheme contains spaces or parentheses. You may receive a `Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS` error when compiling. For now, please name your Apollo projects accordingly.
+
 <h2 id="adding-schema">Adding a schema file to your target directory</h2>
 
 You'll have to copy or [download a schema](downloading-schema.html) to your target directory before generating code.
